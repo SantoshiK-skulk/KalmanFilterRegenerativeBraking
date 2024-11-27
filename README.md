@@ -20,6 +20,21 @@ The **Urban Dynamometer Driving Schedule (UDDS)** dataset is used to simulate an
 2. Install dependencies:
    ```bash
    pip install -r requirements.txt
+
+## Setup Instructions**
+
+### 1. Clone the Repository**
+To get started, clone the repository to your local machine:
+```bash
+git clone https://github.com/your-username/kalman-filter-udds.git
+cd kalman-filter-udds
+
+### 2. Install Python Dependencies
+Ensure you have Python 3.8+ installed. Install the required packages:
+
+```bash
+pip install -r requirements.txt
+
 =======
 # **Kalman Filter for UDDS Data Simulation**
 
