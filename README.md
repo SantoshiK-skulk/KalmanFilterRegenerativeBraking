@@ -60,15 +60,15 @@ repo-root/
 ├── requirements.txt          # Python dependencies
 ├── LICENSE                   # Licensing information
 =======
-## **Setup Instructions**
+## Setup Instructions**
 
-### **1. Clone the Repository**
+### 1. Clone the Repository**
 To get started, clone the repository to your local machine:
 ```bash
 git clone https://github.com/your-username/kalman-filter-udds.git
 cd kalman-filter-udds
 
-### **2. Install Python Dependencies
+### 2. Install Python Dependencies
 Ensure you have Python 3.8+ installed. Install the required packages:
 
 ```bash
