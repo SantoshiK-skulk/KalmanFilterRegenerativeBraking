@@ -21,20 +21,6 @@ The **Urban Dynamometer Driving Schedule (UDDS)** dataset is used to simulate an
    ```bash
    pip install -r requirements.txt
 
-Setup Instructions
-1. Clone the Repository
-bash
-Copy code
-git clone https://github.com/your-username/kalman-filter-udds.git
-cd kalman-filter-udds
-
-2. Install Python Dependencies
-Ensure you have Python 3.8+ installed. Install the required packages:
-bash
-Copy code
-pip install -r requirements.txt
-
-
 How to Use
 1. Preprocess the Raw UDDS Dataset
 Convert the raw dataset (data/raw_udds_data.rtf) into a structured CSV file:
@@ -47,16 +33,20 @@ Output: data/udds_data.csv.
 2. Run Simulation with Default Parameters
 Run the Kalman Filter simulation using the preprocessed dataset and default parameters:
 bash
-Copy code
 python main.py --simulate --save_plots
+Run Parameter Tuning
+python main.py --tune --gamma_range 0.8,1.2,0.1 --q_scale_range 0.05,0.2,0.05 --r_scale_range 0.05,0.2,0.05
+
+Run Kalman Filter simulation using the tuned parameters
+
 
 Plots: Saved in results/ as velocity_estimation.png and road_friction_estimation.png.
 Logs: Metrics such as MAE and RMSE logged in results/simulation.log.
 3. Run Simulation with Custom Parameters
 Customize γ,q_scale,r_scale\gamma, q\_scale, r\_scaleγ,q_scale,r_scale for specific scenarios:
 bash
-Copy code
-python main.py --simulate --gamma 1.0 --q_scale 0.2 --r_scale 0.1 --save_plots
+a. python3 main.py --simulate --gamma 1.0 --q_scale 0.1 --r_scale 0.05 --save_plots
+b. 
 
 Parameters:
 --gamma: Adjust robustness of the H-Infinity Kalman Filter.
