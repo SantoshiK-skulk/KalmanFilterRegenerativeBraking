@@ -1,3 +1,5 @@
+import numpy as np
+
 class ParameterKF:
     def __init__(self, initial_mu=0.8, acceleration_variance=0.02, measurement_error_variance=0.05):
         """
