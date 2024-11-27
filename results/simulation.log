@@ -1,0 +1,5 @@
+2024-11-27 02:10:19,042 - Simulation started
+2024-11-27 02:10:19,042 - Initial road friction estimate (mu): 0.85
+2024-11-27 02:10:19,042 - Velocity MAE: 1.632 m/s
+2024-11-27 02:10:19,042 - Velocity RMSE: 2.664 m/s
+2024-11-27 02:10:19,043 - Simulation completed
