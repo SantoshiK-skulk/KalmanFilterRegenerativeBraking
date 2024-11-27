@@ -21,19 +21,125 @@ The **Urban Dynamometer Driving Schedule (UDDS)** dataset is used to simulate an
    ```bash
    pip install -r requirements.txt
 
-## Setup Instructions**
-
-### 1. Clone the Repository**
-To get started, clone the repository to your local machine:
-```bash
+Setup Instructions
+1. Clone the Repository
+bash
+Copy code
 git clone https://github.com/your-username/kalman-filter-udds.git
 cd kalman-filter-udds
 
-### 2. Install Python Dependencies
+2. Install Python Dependencies
 Ensure you have Python 3.8+ installed. Install the required packages:
-
-```bash
+bash
+Copy code
 pip install -r requirements.txt
+
+
+How to Use
+1. Preprocess the Raw UDDS Dataset
+Convert the raw dataset (data/raw_udds_data.rtf) into a structured CSV file:
+bash
+Copy code
+python main.py --preprocess
+
+Input: data/raw_udds_data.rtf.
+Output: data/udds_data.csv.
+2. Run Simulation with Default Parameters
+Run the Kalman Filter simulation using the preprocessed dataset and default parameters:
+bash
+Copy code
+python main.py --simulate --save_plots
+
+Plots: Saved in results/ as velocity_estimation.png and road_friction_estimation.png.
+Logs: Metrics such as MAE and RMSE logged in results/simulation.log.
+3. Run Simulation with Custom Parameters
+Customize γ,q_scale,r_scale\gamma, q\_scale, r\_scaleγ,q_scale,r_scale for specific scenarios:
+bash
+Copy code
+python main.py --simulate --gamma 1.0 --q_scale 0.2 --r_scale 0.1 --save_plots
+
+Parameters:
+--gamma: Adjust robustness of the H-Infinity Kalman Filter.
+--q_scale: Scale factor for process noise covariance.
+--r_scale: Scale factor for measurement noise covariance.
+4. Visualize Parameter Tuning
+Analyze how different parameter values affect performance using heatmaps:
+bash
+Copy code
+python main.py --tune --gamma_range 0.8,1.2,0.1 --q_scale_range 0.05,0.2,0.05 --r_scale_range 0.05,0.2,0.05 --save_plots
+
+Range Arguments:
+--gamma_range: Range for γ\gammaγ as start,end,step.
+--q_scale_range: Range for q_scaleq\_scaleq_scale.
+--r_scale_range: Range for r_scaler\_scaler_scale.
+Generates heatmaps for MAE and RMSE in results/.
+
+Expected Outputs
+Simulation Metrics:
+Mean Absolute Error (MAE): Tracks average velocity estimation error.
+Root Mean Square Error (RMSE): Measures overall prediction accuracy.
+Generated Plots:
+Velocity Estimation:
+True vs estimated velocity plot.
+Road Friction Estimation:
+Dynamic road friction estimation plot.
+Parameter Tuning Heatmaps:
+Visualize MAE and RMSE across γ,q_scale,r_scale\gamma, q\_scale, r\_scaleγ,q_scale,r_scale values.
+Logs:
+Detailed results saved in results/simulation.log.
+
+Example Workflow
+Step-by-Step Guide
+Preprocess the dataset:
+bash
+Copy code
+python main.py --preprocess
+
+
+Run simulation with default parameters:
+bash
+Copy code
+python main.py --simulate --save_plots
+
+
+Run simulation with custom parameters:
+bash
+Copy code
+python main.py --simulate --gamma 1.1 --q_scale 0.15 --r_scale 0.1 --save_plots
+
+
+Perform parameter tuning:
+bash
+Copy code
+python main.py --tune --gamma_range 0.8,1.2,0.1 --q_scale_range 0.05,0.2,0.05 --r_scale_range 0.05,0.2,0.05 --save_plots
+
+
+
+Advanced Options
+Unit Testing
+Run unit tests to verify the correctness of the Kalman Filters and utilities:
+bash
+Copy code
+pytest tests/
+
+Custom Datasets
+Replace the UDDS dataset with your custom dataset. Ensure it follows this structure:
+plaintext
+Copy code
+Test Time (seconds), Target Speed (mph)
+
+Logging
+All simulation results (metrics and insights) are logged in results/simulation.log.
+
+Future Enhancements
+Incorporate real-world torque and braking data for more realistic simulations.
+Add support for highway driving schedules (e.g., HWFET, FTP).
+Automate parameter tuning using grid search or Bayesian optimization.
+Integrate visualization dashboards for interactive parameter tuning.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
 
 =======
 # **Kalman Filter for UDDS Data Simulation**
@@ -75,16 +181,4 @@ repo-root/
 ├── requirements.txt          # Python dependencies
 ├── LICENSE                   # Licensing information
 =======
-## Setup Instructions**
 
-### 1. Clone the Repository**
-To get started, clone the repository to your local machine:
-```bash
-git clone https://github.com/your-username/kalman-filter-udds.git
-cd kalman-filter-udds
-
-### 2. Install Python Dependencies
-Ensure you have Python 3.8+ installed. Install the required packages:
-
-```bash
-pip install -r requirements.txt
